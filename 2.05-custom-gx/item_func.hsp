@@ -531,6 +531,7 @@
 	if ( inv_weight_charid == CHARA_PLAYER ) {
 		gdata(GDATA_CARGO_WEIGHT) = 0
 	}
+
 	repeat invrange, invhead
 		if ( inv(INV_ITEM_NUM, cnt) != 0 ) {
 			if ( inv(INV_ITEM_WEIGHT, cnt) >= 0 ) {
@@ -543,6 +544,12 @@
 			}
 		}
 	loop
+
+	if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_OVERDOSE ) {
+		gdata(GDATA_CARGO_WEIGHT) = 0
+		locvar_item_exchange_p = 0
+	}
+
 	return locvar_item_exchange_p
 
 #deffunc item_num int item_num_itemid, int item_num_amount
