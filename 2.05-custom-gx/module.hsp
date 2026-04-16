@@ -280,8 +280,16 @@
 
 #deffunc modgrowth int modgrowth_charid, int modgrowth_skillid, int modgrowth_arg3
 	locvar_modgrowth_growth = sdata(modgrowth_skillid + STARTING_SKILL_SPACT, modgrowth_charid) \ 1000 + modgrowth_arg3
-	if ( locvar_modgrowth_growth > 400 ) {
-		locvar_modgrowth_growth = 400
+
+	if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_OVERDOSE ) {
+		if ( locvar_modgrowth_growth > 999 ) {
+			locvar_modgrowth_growth = 999
+		}
+	}
+	else {
+		if ( locvar_modgrowth_growth > 400 ) {
+			locvar_modgrowth_growth = 400
+		}
 	}
 	if ( locvar_modgrowth_growth < 1 ) {
 		locvar_modgrowth_growth = 1
