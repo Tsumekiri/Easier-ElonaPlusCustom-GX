@@ -11,6 +11,10 @@ Personal Project to change Overdose mode into an easier game mode (basically che
 - Increased max trained potential to 999
 - Receive p + 10 PP on each quest
 - Removed death-crest mechanic
+- Plants will not wither
+- Harvesting plants will drop 1 seed
+- Blackjack will not use up your chips
+- Player can cheat indefinitely in blackjack
 
 As I said, basically a cheaty Overdose mode. Otherwise, it stays the same as the main repository.
 
