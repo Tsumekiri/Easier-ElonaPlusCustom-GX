@@ -6963,11 +6963,13 @@
 			loop
 		}
 		else {
-			txt lang("死紋が刻まれていなかったので能力値の減少はないが…。", "There was no Death-Crest engraved on you before death, so there was no reduction in your status...")
-			snd SOUNDLIST_CURSE2
-			cbitmod CHARA_BIT_DEATH_CREST, CHARA_PLAYER, TRUE
-			txtef COLOR_RED
-			txt lang("あなたの身体に死紋が刻まれた！", "Death-Crest is carved on your body!")
+			if ( gdata(GDATA_FLAG_GAME_MODE) != GAMEMODE_OVERDOSE ) {
+				txt lang("死紋が刻まれていなかったので能力値の減少はないが…。", "There was no Death-Crest engraved on you before death, so there was no reduction in your status...")
+				snd SOUNDLIST_CURSE2
+				cbitmod CHARA_BIT_DEATH_CREST, CHARA_PLAYER, TRUE
+				txtef COLOR_RED
+				txt lang("あなたの身体に死紋が刻まれた！", "Death-Crest is carved on your body!")
+			}
 		}
 		txtef COLOR_RED2
 		txt lang("【 刻死紋状態で死亡すると能力値が永続低下する。睡眠を取るまで消えない。 】", "< If you die with the Death-Crest engraved, your stats will permanently drop. It doesn't go away until you sleep. >")
