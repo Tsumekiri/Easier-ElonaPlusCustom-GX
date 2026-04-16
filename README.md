@@ -8,7 +8,6 @@ Personal Project to change Overdose mode into an easier game mode (basically che
 
 - No item weight
 - No magic spellstock usage
-- ~~No potential decrease~~
 
 As I said, basically a cheaty Overdose mode. Otherwise, it stays the same as the main repository.
 
