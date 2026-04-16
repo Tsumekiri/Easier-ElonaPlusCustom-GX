@@ -1003,6 +1003,11 @@
 	if ( locvar_calcspellcoststock_cost < 1 ) {
 		locvar_calcspellcoststock_cost = 1
 	}
+
+	if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_OVERDOSE ) {
+		locvar_calcspellcoststock_cost = 0
+	}
+	
 	return locvar_calcspellcoststock_cost
 
 #deffunc skillinit int skillinit_skillid, int skillinit_charid, int skillinit_arg3
