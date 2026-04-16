@@ -43,7 +43,7 @@ This repository is an unofficial continuation of the above repository using Ruin
 
 ## Thanks
 
-Ruin0x11, for creating and maintaining Elona+ Custom-GX.
+Ruin0x11 and Jianmeng Yu, for creating and maintaining Elona+ Custom-GX.
 
 Glyphy, for creating Elona+ Custom-G.
 
