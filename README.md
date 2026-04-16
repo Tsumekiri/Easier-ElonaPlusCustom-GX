@@ -21,8 +21,6 @@ Elona+ Custom-GX is a new variant of Elona+ based on Elona+ Custom-G, updated wi
 It is originally created and maintained by [Ruin0x11](https://github.com/Ruin0x11), on [this repository](https://github.com/Ruin0x11/ElonaPlusCustom-GX).  
 This repository is an unofficial continuation of the above repository using Ruin0x11's [borscht/erystia](https://github.com/Ruin0x11/borscht) decompiler.
 
-### **[Download the latest release here.](https://github.com/JianmengYu/ElonaPlusCustom-GX/releases/)**
-
 ## Installation
 
 1. Download Elona+ 2.31 from [here](https://mega.nz/file/0GMlHRbR#kTWClL8QeUb0WiB_ZtRoW0nqtkya9mmSu7tB7dOjrYc). Extract it to `elonaplus2.31`.
