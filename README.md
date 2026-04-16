@@ -2,6 +2,20 @@
 
 *\~Believe in Jure and hold a determination to mince.\~*
 
+---
+
+Personal Project to change Overdose mode into an easier game mode (basically cheating). It includes:
+
+- No item weight
+- No magic spellstock usage
+- No potential decrease
+
+As I said, basically a cheaty Overdose mode. Otherwise, it stays the same as the main repository.
+
+I probably won't be keeping this fork up-to-date, as it's just a project I made for fun to learn the language used to make Elona+.
+
+---
+
 Elona+ Custom-GX is a new variant of Elona+ based on Elona+ Custom-G, updated with the changes in Elona+ up to version 2.31.
 
 It is originally created and maintained by [Ruin0x11](https://github.com/Ruin0x11), on [this repository](https://github.com/Ruin0x11/ElonaPlusCustom-GX).  
