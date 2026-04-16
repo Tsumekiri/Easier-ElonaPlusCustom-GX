@@ -6,7 +6,7 @@
 
 Personal Project to change Overdose mode into an easier game mode (basically cheating). It includes:
 
-- ~~No item weight~~
+- No item weight
 - ~~No magic spellstock usage~~
 - ~~No potential decrease~~
 
