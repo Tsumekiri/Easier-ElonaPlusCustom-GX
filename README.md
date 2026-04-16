@@ -10,7 +10,7 @@ Personal Project to change Overdose mode into an easier game mode (basically che
 - No magic spellstock usage
 - Increased max trained potential to 999
 - Receive p + 10 PP on each quest
-- ~~Removed death mark mechanic~~
+- Removed death-crest mechanic
 
 As I said, basically a cheaty Overdose mode. Otherwise, it stays the same as the main repository.
 
