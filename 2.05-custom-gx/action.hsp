@@ -19295,8 +19295,14 @@
 	}
 	feat(3)--
 	if ( feat(3) \ 50 == 0 ) {
-		if ( feat(3) >= 50 ) {
-			feat = tile_plant + 3
+		if ( gdata(GDATA_FLAG_GAME_MODE) != GAMEMODE_OVERDOSE ) {
+				if ( feat(3) >= 50 ) {
+				feat = tile_plant + 3
+			}
+			else {
+				feat++
+				gosub *item_seedNextGrowth
+			}
 		}
 		else {
 			feat++
@@ -19344,17 +19350,32 @@
 
 *item_seedRegrowth
 	p = 15
+
+	locvar_player_loc_x = cdata(CDATA_X, CHARA_PLAYER)
+	locvar_player_loc_y = cdata(CDATA_Y, CHARA_PLAYER)
+
+	if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_OVERDOSE ) {
+		locvar_seed_spawn_amount = 1
+	}
+	else {
+		locvar_seed_spawn_amount = 0
+	}
+
 	if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_GEM ) {
 		p = 25
+		itemcreate -1, ITEM_ID_GEM_SEED, locvar_player_loc_x, locvar_player_loc_y, locvar_seed_spawn_amount
 	}
 	if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_MAGIC ) {
 		p = 30
+		itemcreate -1, ITEM_ID_MAGICAL_SEED, locvar_player_loc_x, locvar_player_loc_y, locvar_seed_spawn_amount
 	}
 	if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_HERB ) {
 		p = 40
+		itemcreate -1, ITEM_ID_HERB_SEED, locvar_player_loc_x, locvar_player_loc_y, locvar_seed_spawn_amount
 	}
 	if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_STRANGE ) {
 		p = 35
+		itemcreate -1, ITEM_ID_UNKNOWN_SEED, locvar_player_loc_x, locvar_player_loc_y, locvar_seed_spawn_amount
 	}
 	if ( val == 0 ) {
 		p = p * 4
@@ -19372,17 +19393,21 @@
 			saibai = 100
 		}
 	}
-	if ( sdata(SKILL_NORMAL_GARDENING, CHARA_PLAYER) < rnd(p + 1) | rnd(200) < p - saibai | feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_ARTIFACT ) {
 
-	// Mod for collect yield with house board (usecustom = 1 when house board collection)
-		if ( usecustom ) {
-			map(x, y, MAP_FEATS_ON_TILE) = 0
+	if ( gdata(GDATA_FLAG_GAME_MODE) != GAMEMODE_OVERDOSE ) {
+		if ( sdata(SKILL_NORMAL_GARDENING, CHARA_PLAYER) < rnd(p + 1) | rnd(200) < p - saibai | feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_ARTIFACT ) {
+
+		// Mod for collect yield with house board (usecustom = 1 when house board collection)
+			if ( usecustom ) {
+				map(x, y, MAP_FEATS_ON_TILE) = 0
+			}
+			else {
+				map(cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 6) = 0
+			}
+			return
 		}
-		else {
-			map(cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), 6) = 0
-		}
-		return
 	}
+
 	if ( adata(ADATA_ID, gdata(GDATA_AREA)) != AREA_CROP ) {
 		map(cdata(CDATA_X, CHARA_PLAYER), cdata(CDATA_Y, CHARA_PLAYER), MAP_FEATS_ON_TILE) = 0
 		return
@@ -19424,17 +19449,29 @@
 
 *item_seedRegrowth_custom
 	p = 15
+
+	if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_OVERDOSE ) {
+		locvar_seed_spawn_amount = 1
+	}
+	else {
+		locvar_seed_spawn_amount = 0
+	}
+
 	if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_GEM ) {
 		p = 25
+		itemcreate -1, ITEM_ID_GEM_SEED, locvar_player_loc_x, locvar_player_loc_y, locvar_seed_spawn_amount
 	}
 	if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_MAGIC ) {
 		p = 30
+		itemcreate -1, ITEM_ID_MAGICAL_SEED, locvar_player_loc_x, locvar_player_loc_y, locvar_seed_spawn_amount
 	}
 	if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_HERB ) {
 		p = 40
+		itemcreate -1, ITEM_ID_HERB_SEED, locvar_player_loc_x, locvar_player_loc_y, locvar_seed_spawn_amount
 	}
 	if ( feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_STRANGE ) {
 		p = 35
+		itemcreate -1, ITEM_ID_UNKNOWN_SEED, locvar_player_loc_x, locvar_player_loc_y, locvar_seed_spawn_amount
 	}
 	if ( val == 0 ) {
 		p = p * 4
@@ -19452,10 +19489,14 @@
 			saibai = 100
 		}
 	}
-	if ( sdata(SKILL_NORMAL_GARDENING, CHARA_PLAYER) < rnd(p + 1) | rnd(200) < p - saibai | feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_ARTIFACT ) {
-		map(x, y, MAP_FEATS_ON_TILE) = 0
-		return
+
+	if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_OVERDOSE ) {
+		if ( sdata(SKILL_NORMAL_GARDENING, CHARA_PLAYER) < rnd(p + 1) | rnd(200) < p - saibai | feat(FEAT_CELL_SUB_FEATURE_ID) \ 10 == SEED_TYPE_ARTIFACT ) {
+			map(x, y, MAP_FEATS_ON_TILE) = 0
+			return
+		}
 	}
+
 	saibai = 0
 	feat = tile_plant
 	gosub *item_seedNextGrowth
@@ -19928,4 +19969,3 @@
 	gdata(GDATA_ROW_ACT) = ACTION_STEAL
 	gosub *generalAct
 	return
-

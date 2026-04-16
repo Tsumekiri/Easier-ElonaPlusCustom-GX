@@ -860,7 +860,9 @@
 		gosub *screen_draw
 		atxinit
 		if ( cnt == 0 ) {
-			mat(1) -= stake
+			if ( gdata(GDATA_FLAG_GAME_MODE) != GAMEMODE_OVERDOSE ) {
+				mat(1) -= stake
+			}
 			txt lang(matname(1) + "を" + stake + "個失った(残り:" + mat(1) + "個)", "You lose " + stake + " " + matname(1) + "(s). (Total:" + mat(1) + ")")
 		}
 		if ( cardround == 0 ) {
@@ -988,21 +990,23 @@
 			opencard2 stat
 			p = ikasama
 			ikasamalv++
-			if ( rnd(sdata(SKILL_ATTR_DEX, CHARA_PLAYER)) < rnd(p) ) {
-				atxinit
-				noteadd lang("イカサマだ！", "Cheater!")
-				atxinfon(1) = lang("カジノチップ残り " + mat(1) + "枚\n", "Casino chips left: " + mat(1) + "\n")
-				atxinfon(2) = lang("賭けチップ " + stake + "枚 現在" + winrow + "連勝中", "Bets: " + stake + " Wins: " + winrow + "")
-				atxinfon(3) = lang("イカサマ警戒Lv" + ikasama + " 景品Lv" + keihin + "　", "Alert-Lv: " + ikasama + " Rewards-Lv: " + keihin + "")
-				winrow = 0
-				txt lang("イカサマが見つかってしまった…", "You are caught cheating...")
-				modkarma CHARA_PLAYER, -5
-				chatList 0, lang("濡れ衣だ！", "I didn't do it!")
-				chatesc = -1
-				txtadvmsgfix = 0
-				txtadvscreenupdate = 1
-				gosub *com_txtadv_loop
-				break
+			if ( gdata(GDATA_FLAG_GAME_MODE) != GAMEMODE_OVERDOSE ) {
+				if ( rnd(sdata(SKILL_ATTR_DEX, CHARA_PLAYER)) < rnd(p) ) {
+					atxinit
+					noteadd lang("イカサマだ！", "Cheater!")
+					atxinfon(1) = lang("カジノチップ残り " + mat(1) + "枚\n", "Casino chips left: " + mat(1) + "\n")
+					atxinfon(2) = lang("賭けチップ " + stake + "枚 現在" + winrow + "連勝中", "Bets: " + stake + " Wins: " + winrow + "")
+					atxinfon(3) = lang("イカサマ警戒Lv" + ikasama + " 景品Lv" + keihin + "　", "Alert-Lv: " + ikasama + " Rewards-Lv: " + keihin + "")
+					winrow = 0
+					txt lang("イカサマが見つかってしまった…", "You are caught cheating...")
+					modkarma CHARA_PLAYER, -5
+					chatList 0, lang("濡れ衣だ！", "I didn't do it!")
+					chatesc = -1
+					txtadvmsgfix = 0
+					txtadvscreenupdate = 1
+					gosub *com_txtadv_loop
+					break
+				}
 			}
 		}
 		if ( rtval == 3 ) {
