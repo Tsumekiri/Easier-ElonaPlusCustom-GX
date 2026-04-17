@@ -4,7 +4,7 @@
 
 ---
 
-Personal Project to change Overdose mode into an easier game mode (basically cheating). It includes:
+Personal project to change Overdose mode into an easier game mode (basically cheating). It's just a learning project. It includes:
 
 - No item weight
 - No magic spellstock usage
@@ -17,7 +17,7 @@ Personal Project to change Overdose mode into an easier game mode (basically che
 - Player can cheat indefinitely in blackjack
 - Can eat indefinitely
 
-As I said, basically a cheaty Overdose mode. Otherwise, it stays the same as the main repository.
+As I said, basically a cheaty Overdose mode and a learning project. Otherwise, it stays the same as the main repository.
 
 I probably won't be keeping this fork up-to-date, as it's just a project I made for fun to learn the language used to make Elona+.
 
