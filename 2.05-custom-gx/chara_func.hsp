@@ -8292,6 +8292,11 @@
 			skillmod SKILL_ATTR_CHA, chara_vomit_charid, -100
 		}
 	}
+
+	if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_OVERDOSE ) {
+		cure_anorexia chara_vomit_charid
+	}
+
 	dmgcon chara_vomit_charid, CONDITION_DIM, 100
 	modweight chara_vomit_charid, (1 + rnd(5)) * (-1)
 	if ( cdata(CDATA_HUNGER, chara_vomit_charid) <= 0 ) {

@@ -20015,6 +20015,8 @@
 		}
 		if ( cdata(CDATA_HUNGER, CHARA_PLAYER) < 15000 - 1000 ) {
 			cdata(CDATA_HUNGER, CHARA_PLAYER) += 1000
+
+			limit_hunger
 		}
 		buff = lang(_dozo(), "Here you are.")
 		txt lang("なかなか美味しかった。", "It was tasty."), lang("悪くない。", "Not bad at all."), lang("あなたは舌鼓をうった。", "You smack your lips.")
@@ -26769,4 +26771,3 @@
 	loop
 	randomize
 	return
-

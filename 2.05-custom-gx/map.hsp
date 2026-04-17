@@ -15363,6 +15363,9 @@
 					snd SOUNDLIST_EAT1
 					txt lang("シェルターの貯蔵食品を食べた。", "You eat stored food.")
 					cdata(CDATA_HUNGER, CHARA_PLAYER) += 5000
+
+					limit_hunger
+					
 					gosub *eat_finish
 				}
 			}
@@ -15771,4 +15774,3 @@
 		loop
 	}
 	return
-

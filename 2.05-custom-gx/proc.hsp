@@ -4370,6 +4370,8 @@
 	mode = MODELIST_MAIN
 	wake_up
 	cdata(CDATA_HUNGER, cc) -= 1500 / (trait(TRAIT_RACE_SLOW_DIGESTION) + 1)
+	limit_hunger
+	
 	if ( TweakData(TWEAK_GAMEPLAY_CG_DISABLE_THIRST, TWEAK_CATEGORY_GAMEPLAY) == FALSE ) {
 		cdata(CDATA_THIRST, cc) -= 1500 / 2
 	}
@@ -27053,4 +27055,3 @@
 	cdata(CDATA_MP, tc) = cdata(CDATA_MAX_MP, tc)
 	cdata(CDATA_SP, tc) = cdata(CDATA_MAX_SP, tc)
 	return
-

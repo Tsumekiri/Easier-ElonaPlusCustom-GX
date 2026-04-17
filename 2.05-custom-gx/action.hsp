@@ -52,6 +52,12 @@
 
 /********** RUIN0X11 CUSTOM - ENDING **********/
 
+#deffunc limit_hunger
+	if ( gdata(GDATA_FLAG_GAME_MODE) == GAMEMODE_OVERDOSE ) {
+		cdata(CDATA_HUNGER, CHARA_PLAYER) = limit(cdata(CDATA_HUNGER, CHARA_PLAYER), 5000, 9000)
+	}
+	return
+
 *act_throw
 	if ( inv(INV_ITEM_PROPERTY, ci) == PROP_NPC | inv(INV_ITEM_PROPERTY, ci) == PROP_SPECIAL ) {
 		snd SOUNDLIST_FAIL1
@@ -8284,6 +8290,8 @@
 			inv(INV_ITEM_PARAM2, ci)--
 			cdata(CDATA_THIRST, CHARA_PLAYER) += 2000
 			cdata(CDATA_HUNGER, CHARA_PLAYER) += 150
+
+			limit_hunger
 		}
 		goto *act_use_SWEND1
 		_switch_sw++
@@ -12743,6 +12751,9 @@
 			inv(INV_ITEM_NUM, ci)--
 			cell_refresh inv(INV_ITEM_X, ci), inv(INV_ITEM_Y, ci)
 			cdata(CDATA_HUNGER, CHARA_PLAYER) += 750
+
+			limit_hunger
+
 			gosub *music_play
 			goto *act_use_SWEND1
 		}
@@ -12774,6 +12785,9 @@
 			txtef COLOR_YELLOW
 			txt lang("…甘くておいしい！", "...It was sweet and delicious.")
 			cdata(CDATA_HUNGER, CHARA_PLAYER) += 750
+
+			limit_hunger
+
 			dmghp CHARA_PLAYER, cdata(CDATA_MAX_HP, CHARA_PLAYER) / 10, DAMAGE_FROM_CHOCO
 			gosub *music_play
 			goto *act_use_SWEND1
@@ -12833,6 +12847,9 @@
 			txtef COLOR_YELLOW
 			txt lang("まだ柔らかいけどおいしい！", "It's still soft but delicious nevertheless.")
 			cdata(CDATA_HUNGER, CHARA_PLAYER) += 750
+
+			limit_hunger
+
 			gosub *music_play
 			goto *act_use_SWEND1
 		}
