@@ -15,6 +15,7 @@ Personal Project to change Overdose mode into an easier game mode (basically che
 - Harvesting plants will drop 1 seed
 - Blackjack will not use up your chips
 - Player can cheat indefinitely in blackjack
+- Can eat indefinitely
 
 As I said, basically a cheaty Overdose mode. Otherwise, it stays the same as the main repository.
 
