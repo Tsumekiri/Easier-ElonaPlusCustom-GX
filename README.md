@@ -30,21 +30,9 @@ This repository is an unofficial continuation of the above repository using Ruin
 
 ## Installation
 
-1. Download Elona+ 2.31 from [here](https://mega.nz/file/0GMlHRbR#kTWClL8QeUb0WiB_ZtRoW0nqtkya9mmSu7tB7dOjrYc). Extract it to `elonaplus2.31`.
-2. Extract the contents of Custom-GX's archive to the `elonaplus2.31` folder, overwriting all existing files.
-3. Run `elonapluscgx.exe`.
-
-![](installation.gif)
-
-## Building (You don't need this for playing.)
-
-1. Follow the installation instructions above. Rename the `elonaplus2.31` folder to `2.05-custom-gx` and move it to the `assets/` folder of this repository.
-2. Download the HSP3.4 SDK (`hsp34a.zip`) from [here](http://hsp.tv/make/downlist.html) and extract it somewhere.
-3. Copy `hsplua.dll` from the `2.05-custom-gx` folder into the HSP3.4 SDK folder. Otherwise, you'll get an error saying it's missing when running the game from the editor.
-4. Open `2.05-custom-gx/main.hsp` with `hsed3.exe` from the HSP3.4 SDK folder. Press <kbd>F5</kbd> to compile and run under debug mode.
-5. Press <kbd>Ctrl+F9</kbd> to create an executable named `elonapluscgx.exe`. You can then copy it to your Custom-GX install folder.
-
-**Warning**: If you make any changes to the code, *always make sure the file encoding is set to SHIFT_JIS!* Otherwise, you'll get a lot of cryptic compiler errors.
+1. Install Elona Plus Custom-GX normally from the main repository.
+2. Build the new `elonapluscgx.exe` from this repo, using the same instructions as for building Elona Plus Custom-GX.
+3. Substitute the executable for this one (the newly built `elonapluscgx.exe`).
 
 ## Thanks
 
